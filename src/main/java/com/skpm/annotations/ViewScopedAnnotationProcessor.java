@@ -15,7 +15,7 @@ import javax.annotation.processing.SupportedOptions;
 
 /**
  *
- * @author Suresh Pun <suresh.punmagar@syntechnepal.com>
+ * @author Suresh Pun 
  */
 @SupportedAnnotationTypes(value={ "javax.faces.bean.ViewScoped"} )
 //@SupportedSourceVersion( SourceVersion.RELEASE_7 )

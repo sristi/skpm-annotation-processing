@@ -13,7 +13,7 @@ import javax.faces.bean.ViewScoped;
 
 /**
  *
- * @author Suresh Pun <suresh.punmagar@syntechnepal.com>
+ * @author Suresh Pun
  */
 @Target(ElementType.TYPE )
 @Retention(RetentionPolicy.SOURCE)

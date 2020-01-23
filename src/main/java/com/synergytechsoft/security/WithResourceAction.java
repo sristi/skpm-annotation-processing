@@ -16,7 +16,7 @@ import javax.interceptor.InterceptorBinding;
 
 /**
  *
- * @author Suresh Pun <suresh.punmagar@syntechnepal.com>
+ * @author Suresh Pun
  */
 @InterceptorBinding
 @Retention(RetentionPolicy.RUNTIME)

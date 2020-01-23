@@ -21,7 +21,7 @@ import javax.lang.model.element.ExecutableElement;
 
 /**
  *
- * @author Suresh Pun <suresh.punmagar@syntechnepal.com>
+ * @author Suresh Pun
  */
 @SupportedAnnotationTypes(value={ "com.skpm.annotations.ExtraViewScoped"} )
 //@SupportedSourceVersion( SourceVersion.RELEASE_7 )
