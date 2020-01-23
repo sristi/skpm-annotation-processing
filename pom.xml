@@ -3,12 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
     <groupId>io.github.sristi</groupId>
     <artifactId>skpm-annotation-processing</artifactId>
     <version>1.0.0</version>
 
-    <description>An custom annotation processor library for JSF ViewScoped beans to be published on Maven Central </description>
+    <description>A custom annotation processor library for JSF ViewScoped beans to be published on Maven Central </description>
     <url>https://github.com/sristi/skpm-annotation-processing</url>
     
     <developers>
@@ -153,5 +153,5 @@
     
         </plugins>
     </build>
-    
+    <name>skpm-annotation-processing</name>
 </project>
