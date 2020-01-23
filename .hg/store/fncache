@@ -1,0 +1,11 @@
+data/src/main/java/com/skpm/annotations/ViewScopedAnnotationProcessor.java.i
+data/src/main/resources/META-INF/services/javax.annotation.processing.Processor.i
+data/src/main/java/com/skpm/annotations/ImmutableAnnotaitonProcessor.java.i
+data/pom.xml.i
+data/src/main/java/com/skpm/annotations/ExtraViewScoped.java.i
+data/.hgignore.i
+data/src/main/java/com/skpm/annotations/Immutable.java.i
+data/src/main/java/com/skpm/annotations/ExtraViewScopedAnnotationProcessor.java.i
+data/src/main/java/com/synergytechsoft/config/ActionEnum.java.i
+data/src/main/java/com/synergytechsoft/security/WithResourceAction.java.i
+data/src/main/java/com/synergytechsoft/config/ResourceEnum.java.i
