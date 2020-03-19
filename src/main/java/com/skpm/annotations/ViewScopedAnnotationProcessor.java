@@ -35,7 +35,7 @@ public class ViewScopedAnnotationProcessor extends AbstractProcessor {
                ElementKind kind = variableElement.getKind();
                if( kind==ElementKind.METHOD &&  !variableElement.getModifiers().contains( Modifier.FINAL ) ) {
                  processingEnv.getMessager().printMessage( Diagnostic.Kind.ERROR,
-                   String.format( "Class '%s' is annotated as @ViewScoped, but method '%s' is not declared as final", 
+                   String.format( "Class '%s' is annotated as , but method '%s' is not declared as final", 
                      typeElement.getSimpleName(), variableElement.getSimpleName()            
                    ) 
                  );                     

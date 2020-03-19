@@ -17,6 +17,6 @@ import javax.faces.bean.ViewScoped;
  */
 @Target(ElementType.TYPE )
 @Retention(RetentionPolicy.SOURCE)
-@ViewScoped
+
 public @interface ExtraViewScoped {
 }

@@ -16,6 +16,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedOptions;
+import javax.faces.bean.ViewScoped;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.ExecutableElement;
 
@@ -23,7 +24,7 @@ import javax.lang.model.element.ExecutableElement;
  *
  * @author Suresh Pun
  */
-@SupportedAnnotationTypes(value={ "com.skpm.annotations.ExtraViewScoped"} )
+@SupportedAnnotationTypes(value={ "javax.faces.bean.ViewScoped"} )
 //@SupportedSourceVersion( SourceVersion.RELEASE_7 )
 @SupportedOptions(value = {"debug","fullyAnnotationConfigured"})
 public class ExtraViewScopedAnnotationProcessor extends AbstractProcessor {
@@ -31,37 +32,40 @@ public class ExtraViewScopedAnnotationProcessor extends AbstractProcessor {
   public boolean process(final Set< ? extends TypeElement > annotations, 
       final RoundEnvironment roundEnv) {
          
-        for( final Element element: roundEnv.getElementsAnnotatedWith( ExtraViewScoped.class ) ) {
+        for( final Element element: roundEnv.getElementsAnnotatedWith( ViewScoped.class ) ) {
           if( element instanceof TypeElement ) {
             final TypeElement typeElement = ( TypeElement )element;
 
             for( final Element eclosedElement: typeElement.getEnclosedElements() ) {
-           if( eclosedElement instanceof ExecutableElement ) {
-               final ExecutableElement variableElement = ( ExecutableElement )eclosedElement;
-               ElementKind kind = variableElement.getKind();
-               try {
-                   Class annotationClass = Class.forName("com.synergytechsoft.security.WithResourceAction");
-                   
-                   if(kind==ElementKind.METHOD && variableElement.getAnnotation(annotationClass) ==null){
-                       processingEnv.getMessager().printMessage( Diagnostic.Kind.ERROR,
-                        String.format( "Class '%s' is annotated as @ExtraViewScoped, but method '%s' is not annotated as @WithResourceAction", 
-                          typeElement.getSimpleName(), variableElement.getSimpleName() ) );
-                   }
-                       
-                   /*variableElement.getAnnotation(annotationClass);
-                    
-                    if(( kind==ElementKind.METHOD ) &&  !variableElement.getModifiers().contains( Modifier.FINAL ) ) {
-                      processingEnv.getMessager().printMessage( Diagnostic.Kind.ERROR,
-                        String.format( "Class '%s' is annotated as @ExtraViewScoped, but method '%s' is not declared as final", 
-                          typeElement.getSimpleName(), variableElement.getSimpleName()            
-                        ) 
-                      );                     
-                    }*/
-               } catch (ClassNotFoundException ex) {
-                   Logger.getLogger(ExtraViewScopedAnnotationProcessor.class.getName()).log(Level.SEVERE, null, ex);
-               }
-             }
-           }
+                if( eclosedElement instanceof ExecutableElement ) {
+                    final ExecutableElement variableElement = ( ExecutableElement )eclosedElement;
+                    ElementKind kind = variableElement.getKind();
+                    try {
+                        Class annotationClass = Class.forName("com.synergytechsoft.security.WithResourceAction");
+                        Class postConstructClass = Class.forName("javax.annotation.PostConstruct");
+                        Class preDestroyClass = Class.forName("javax.annotation.PreDestroy");
+                        if(kind==ElementKind.METHOD && variableElement.getAnnotation(annotationClass) ==null 
+                                && variableElement.getAnnotation(postConstructClass)==null
+                                && variableElement.getAnnotation(preDestroyClass)==null){
+                            processingEnv.getMessager().printMessage( Diagnostic.Kind.ERROR,
+                             String.format( "Class '%s' is annotated as , but method '%s' is not annotated as @WithResourceAction", 
+                               typeElement.getSimpleName(), variableElement.getSimpleName() ) );
+                        }
+
+                        /*variableElement.getAnnotation(annotationClass);
+
+                         if(( kind==ElementKind.METHOD ) &&  !variableElement.getModifiers().contains( Modifier.FINAL ) ) {
+                           processingEnv.getMessager().printMessage( Diagnostic.Kind.ERROR,
+                             String.format( "Class '%s' is annotated as @ExtraViewScoped, but method '%s' is not declared as final", 
+                               typeElement.getSimpleName(), variableElement.getSimpleName()            
+                             ) 
+                           );                     
+                         }*/
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(ExtraViewScopedAnnotationProcessor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                  }
+                }
         }
         // Claiming that annotations have been processed by this processor 
       }
