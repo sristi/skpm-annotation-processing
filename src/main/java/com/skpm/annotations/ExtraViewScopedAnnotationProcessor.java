@@ -66,18 +66,19 @@ public class ExtraViewScopedAnnotationProcessor extends AbstractProcessor {
                     !enclosedElement.getSimpleName().toString().startsWith("set") &&
                     !enclosedElement.getSimpleName().toString().startsWith("is") &&
                     !enclosedElement.getSimpleName().toString().startsWith("has") &&
-                    !enclosedElement.getSimpleName().toString().startsWith("can") &&
-                    !enclosedElement.getSimpleName().toString().endsWith("NoAcl") ) {
+                    !enclosedElement.getSimpleName().toString().startsWith("can") ) {
                 final ExecutableElement variableElement = ( ExecutableElement )enclosedElement;
                 ElementKind kind = variableElement.getKind();
                 
                 try {
                     Class annotationClass = Class.forName("com.synergytechsoft.security.WithResourceAction");
                     Class postConstructClass = Class.forName("javax.annotation.PostConstruct");
+                    Class noAclClass = Class.forName("com.synergytechsoft.security.NoAcl");
                     Class preDestroyClass = Class.forName("javax.annotation.PreDestroy");
                     if(kind==ElementKind.METHOD && variableElement.getAnnotation(annotationClass) ==null
                             && variableElement.getAnnotation(postConstructClass)==null
-                            && variableElement.getAnnotation(preDestroyClass)==null ){
+                            && variableElement.getAnnotation(preDestroyClass)==null
+                            && variableElement.getAnnotation(noAclClass)==null){
                         processingEnv.getMessager().printMessage( Diagnostic.Kind.ERROR,
                          String.format( "Class '%s' is annotated as '%s' , but method '%s' is not annotated as @WithResourceAction", 
                            typeElement.getQualifiedName(),annotationName, variableElement.getSimpleName() ) );

@@ -6,7 +6,7 @@
     
     <groupId>io.github.sristi</groupId>
     <artifactId>skpm-annotation-processing</artifactId>
-    <version>5.0.0</version>
+    <version>6.0.0</version>
 
     <description>A custom annotation processor library for JSF ViewScoped beans to be published on Maven Central </description>
     <url>https://github.com/sristi/skpm-annotation-processing</url>
