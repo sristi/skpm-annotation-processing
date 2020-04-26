@@ -63,8 +63,10 @@ public class ExtraViewScopedAnnotationProcessor extends AbstractProcessor {
                     !enclosedElement.getModifiers().contains(Modifier.STATIC) &&
                     !enclosedElement.getModifiers().contains(Modifier.FINAL) ) && 
                     !enclosedElement.getSimpleName().toString().startsWith("get") &&
+                    !enclosedElement.getSimpleName().toString().startsWith("set") &&
                     !enclosedElement.getSimpleName().toString().startsWith("is") &&
-                    !enclosedElement.getSimpleName().toString().startsWith("set") ) {
+                    !enclosedElement.getSimpleName().toString().startsWith("has") &&
+                    !enclosedElement.getSimpleName().toString().startsWith("can") ) {
                 final ExecutableElement variableElement = ( ExecutableElement )enclosedElement;
                 ElementKind kind = variableElement.getKind();
                 
